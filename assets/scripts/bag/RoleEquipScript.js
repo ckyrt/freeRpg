@@ -86,7 +86,6 @@ cc.Class({
         let bag = cc.find("Canvas/back/ui/bag")
         let bagScript = bag.getComponent('bagScript')
         bagScript.remove_item(bagItem.uid)
-        bagScript.refreshBag()
 
         this.allItems[part] = item
         return 1
@@ -106,7 +105,6 @@ cc.Class({
         let bag = cc.find("Canvas/back/ui/bag")
         let bagScript = bag.getComponent('bagScript')
         bagScript.add_bag_item(equipItem.allAttrs)
-        bagScript.refreshBag()
 
         //身上把它移除
         equipItem.node.destroy()

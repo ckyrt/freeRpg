@@ -36,31 +36,11 @@ cc.Class({
     onLoad () {
         {
             var attrs = {
-                'imgSrc':'001-Weapon01',
-                'attack':10,
-                'name':'短剑',
-                'part':'weapon',
-                'descript':'一把可以用来对付小动物的武器，增加10点攻击力',
-            }
-            this.add_bag_item(attrs)
-        }
-        {
-            var attrs = {
                 'imgSrc':'009-Shield01',
                 'defend':10,
                 'name':'木盾',
                 'part':'shield',
                 'descript':'有了它 可以增加你的抗击打能力，增加防御力10点',
-            }
-            this.add_bag_item(attrs)
-        }
-        {
-            var attrs = {
-                'imgSrc':'003-Weapon03',
-                'attack':15,
-                'name':'短剑',
-                'part':'weapon',
-                'descript':'一把小斧头，用起来非常顺手，增加15点攻击力',
             }
             this.add_bag_item(attrs)
         }

@@ -459,7 +459,16 @@ cc.Class({
                         {
                             role.setAttr('zhengxie', 'xie')
                             gs._addTextInfo('你已加入邪派')
-                            gs._showDialog('恭喜，以后打败正派那些伪君子就看你的了！')
+                            gs._showDialog('恭喜，以后打败正派那些伪君子就看你的了！赠送你一把小斧头作为礼物。')
+
+                            var attrs = {
+                                'imgSrc':'003-Weapon03',
+                                'attack':15,
+                                'name':'短剑',
+                                'part':'weapon',
+                                'descript':'一把小斧头，用起来非常顺手，增加15点攻击力',
+                            }
+                            gs.addBagItem(attrs)
                         },
                         function()
                         {
@@ -486,7 +495,17 @@ cc.Class({
                         {
                             role.setAttr('zhengxie', 'zheng')
                             gs._addTextInfo('你已加入正派')
-                            gs._showDialog('恭喜，你已经是正派的成员了，以后江湖路就看你的了！')
+                            gs._showDialog('恭喜，你已经是正派的成员了，赠送你一把短剑作为礼物，以后江湖路就看你的了！')
+
+                            var attrs = {
+                                'imgSrc':'001-Weapon01',
+                                'attack':10,
+                                'name':'短剑',
+                                'part':'weapon',
+                                'descript':'一把可以用来对付小动物的武器，增加10点攻击力',
+                            }
+                            gs.addBagItem(attrs)
+
                         },
                         function()
                         {
@@ -910,5 +929,15 @@ cc.Class({
 
         //删掉地雷
         this.remove_item(mineItem.uid)
+    },
+
+
+
+    //背包添加道具
+    addBagItem:function(itemAttrs)
+    {
+        let bag = cc.find("Canvas/back/ui/bag")
+        let bagScript = bag.getComponent('bagScript')
+        bagScript.add_bag_item(itemAttrs)
     }
 });
