@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "6760ebe4-634c-4aa5-be3b-402627aaefab",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "124-Civilian24": {
+      "ver": "1.0.4",
+      "uuid": "c7546891-b97a-4034-a9b6-14739d551da4",
+      "rawTextureUuid": "6760ebe4-634c-4aa5-be3b-402627aaefab",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -1,
+      "trimX": 5,
+      "trimY": 4,
+      "width": 118,
+      "height": 186,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

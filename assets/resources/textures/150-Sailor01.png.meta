@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "d8abc8b9-94c7-4ab8-af42-0e95561d9da9",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "150-Sailor01": {
+      "ver": "1.0.4",
+      "uuid": "69a9e3d5-22db-4680-bdf0-db79f3914aca",
+      "rawTextureUuid": "d8abc8b9-94c7-4ab8-af42-0e95561d9da9",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -0.5,
+      "offsetY": 0.5,
+      "trimX": 4,
+      "trimY": 1,
+      "width": 119,
+      "height": 189,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

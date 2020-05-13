@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "daa9380a-8140-44ac-981b-7332641fba43",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "147-Storekeeper01": {
+      "ver": "1.0.4",
+      "uuid": "db65cb36-97f5-4009-9a7f-3ddd4120d18d",
+      "rawTextureUuid": "daa9380a-8140-44ac-981b-7332641fba43",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 1,
+      "trimX": 3,
+      "trimY": 0,
+      "width": 122,
+      "height": 190,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

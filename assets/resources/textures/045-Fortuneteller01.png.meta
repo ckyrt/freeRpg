@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "aa7682f0-fba7-459f-b684-2110a87efe83",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "045-Fortuneteller01": {
+      "ver": "1.0.4",
+      "uuid": "03295e5b-792a-4e83-a030-491e2bf3cfd1",
+      "rawTextureUuid": "aa7682f0-fba7-459f-b684-2110a87efe83",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -1,
+      "trimX": 2,
+      "trimY": 4,
+      "width": 125,
+      "height": 186,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

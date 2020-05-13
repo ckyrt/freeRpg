@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "a65dc385-528d-4f94-90ad-0bf72135bbf0",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "146-Prisoner02": {
+      "ver": "1.0.4",
+      "uuid": "9725de13-2e6e-4143-b67f-f09a344b23a3",
+      "rawTextureUuid": "a65dc385-528d-4f94-90ad-0bf72135bbf0",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -1,
+      "trimX": 6,
+      "trimY": 4,
+      "width": 117,
+      "height": 186,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "5e18d54b-742d-42cb-a9bd-b26dd3bfb65a",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 832,
+  "height": 768,
+  "platformSettings": {},
+  "subMetas": {
+    "188-Wagon01": {
+      "ver": "1.0.4",
+      "uuid": "d4df843f-a641-4569-ab79-73026b54b365",
+      "rawTextureUuid": "5e18d54b-742d-42cb-a9bd-b26dd3bfb65a",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 1,
+      "trimX": 1,
+      "trimY": 0,
+      "width": 830,
+      "height": 766,
+      "rawWidth": 832,
+      "rawHeight": 768,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

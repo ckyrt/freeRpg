@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "5951fc72-0fd6-410c-b0f3-60e21a4f9bbe",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "137-BunnyGirl01": {
+      "ver": "1.0.4",
+      "uuid": "488fda50-edb2-4afd-b801-dc97a55b826c",
+      "rawTextureUuid": "5951fc72-0fd6-410c-b0f3-60e21a4f9bbe",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 1,
+      "offsetY": 0,
+      "trimX": 5,
+      "trimY": 2,
+      "width": 120,
+      "height": 188,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

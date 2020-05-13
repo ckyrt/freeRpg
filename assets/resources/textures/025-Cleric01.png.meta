@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "eb185353-3b90-4505-af54-ccd2c0284e4b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 128,
+  "height": 192,
+  "platformSettings": {},
+  "subMetas": {
+    "025-Cleric01": {
+      "ver": "1.0.4",
+      "uuid": "b09f0f07-e7f0-467d-a2a1-098085f313aa",
+      "rawTextureUuid": "eb185353-3b90-4505-af54-ccd2c0284e4b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0.5,
+      "offsetY": -1,
+      "trimX": 4,
+      "trimY": 4,
+      "width": 121,
+      "height": 186,
+      "rawWidth": 128,
+      "rawHeight": 192,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
