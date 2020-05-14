@@ -298,6 +298,12 @@ var global = {
         sprite.setRect(tmpRect);
         return sprite
     },
+
+    //随机数
+    random:function(lower, upper) 
+    {
+        return Math.round(Math.random()*(upper-lower)+lower)         
+    },
 }
 
 module.exports = global;

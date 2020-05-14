@@ -1,6 +1,4 @@
-
 var global = require('global')
-var npcFunc = require('npcFunc')
 
 cc.Class({
     extends: cc.Component,
@@ -21,67 +19,24 @@ cc.Class({
         //         this._bar = value;
         //     }
         // },
-        x:0,
-        y:0,
-    },
-    
-    update:function(dt)
-    {
-        let x = this.getAttr('nextX')
-        let y = this.getAttr('nextY')
-
-        let backX = this.gs_.node.x
-        let backY = this.gs_.node.y
-
-        if(x == null || y == null)
-            return
-        if(this.x == x && this.y == y)
-            return
-
-        console.log('next '+x+","+y) 
-        console.log('cur '+this.x+","+this.y) 
-        //检测到达
-        if(global._checkArrived(x, y, this))
-        {
-            //到达 修正
-            global.set_grid(x, y, this)          
-            global._findPathAndGetNextPoint(this, this.getAttr('endPosX'), this.getAttr('endPosY'))
-        }
-        else
-        {
-            //实施移动
-            global._execMove(dt, x, y, this)
-        }
     },
 
-    moveTo:function(x,y)
-    {
-        //console.log('moveTo: '+x+','+y)
-
-        this.setAttr('endPosX', x)
-        this.setAttr('endPosY', y)
-
-        global._findPathAndGetNextPoint(this, this.getAttr('endPosX'), this.getAttr('endPosY'))
-    },
-
-
-
-    
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-    },
+    // onLoad () {},
 
     start () {
-
-        let back = cc.find("Canvas/back");
+        let back = cc.find("Canvas/back")
         this.gs_ = back.getComponent('gameScript')
-        global.gs_ = this.gs_
     },
 
-    init(attrs)
+    // update (dt) {},
+
+    initMonsterAttrs(attrs)
     {
         this.allAttrs = JSON.parse(JSON.stringify(attrs)) //attrs//深拷贝
+
+        this.node.getChildByName('monster_name').getComponent( cc.Label ).string = this.getAttr('name')
 
         //加载图片
         var url = 'textures/' + this.allAttrs['imgSrc']
@@ -100,10 +55,7 @@ cc.Class({
             var sp = self.node.getComponent(cc.Sprite);//获取组件
             sp.spriteFrame = global._getWalkSprite(global.DIR_D, self);//更改图片
 
-            self.node.width = self.getAttr('spriteWidth')
-            self.node.height = self.getAttr('spriteHeight')
-
-            console.log('role init load res')
+            console.log('npc init load res')
 　　　　})
     },
 
@@ -116,12 +68,10 @@ cc.Class({
 
         this.allAttrs[att] = v
 
-        this.node.getChildByName('role_name').getComponent( cc.Label ).string = this.getAttr('name')
-
-        let attrEvent = new cc.Event.EventCustom("AttrChangeSig", true)
-        attrEvent.setUserData({uid:this.uid, attr:att, old:v1, new:v,})
-        let back = cc.find("Canvas/back");
-        back.dispatchEvent(attrEvent)
+        if(att == 'hp')
+        {
+            this.node.getChildByName('hp').getChildByName('cur_hp').getComponent( cc.Sprite ).fillRange = v / this.getAttr('max_hp')
+        }
     },
 
     getAttr: function(att)

@@ -13,6 +13,10 @@ global.gs_ = this
 var npcFunc = require('npcFunc')
 npcFunc.gs_ = this
 
+var itemConfig = require('itemConfig')
+var monsterConfig = require('monsterConfig')
+var npcConfig = require('npcConfig')
+
 cc.Class({
     extends: cc.Component,
 
@@ -105,7 +109,7 @@ cc.Class({
     onLoad() {
 
         this.curItemScript_ = null
-        let mapBack = cc.find("Canvas/back/ui/mapBack")
+        let mapBack = cc.find("Canvas/back/mapBack")
 
         mapBack.on(cc.Node.EventType.TOUCH_START,
             function(t){
@@ -426,106 +430,22 @@ cc.Class({
             //this.add_item(20, 39, attrs)
         }
 
+        this.add_npc(20, 9, npcConfig['新手指导员'])
+        this.add_npc(5, 6, npcConfig['柳娟'])
+        this.add_npc(10, 9, npcConfig['温有余'])
+        this.add_npc(5, 10, npcConfig['王二牛'])
         {
-            var attrs = {
-                
-                'imgSrc':'066-Beast04',
-                'spriteWidth':32,
-                'spriteHeight':48,
-                'npcName':'新手指导员',
-                onRoleCloseTo:function(role, gs)
-                {
-                    if(role.getAttr('zhengxie') == null)
-                        gs._showDialog('小子 欢迎来到泫渤派啊 你还太嫩 需要去加入一个门派, 你可以去找 柳娟(正)或者 温有余(邪), 他们会告诉你怎么做')
-                    else
-                    gs._showDialog('你已经加入了门派 去做该做的事情去吧')
-                },
-            }
-            this.add_npc(20, 9, attrs)
-        }
-        {
-            var attrs = {
-                
-                'imgSrc':'013-Warrior01',
-                'spriteWidth':32,
-                'spriteHeight':48,
-                'npcName':'温有余',
-
-                onRoleCloseTo:function(role, gs)
-                {
-                    if(role.getAttr('zhengxie') == null)
-                        gs._showDialog('不错 年轻人，来加入我们邪派吧？', 
-                        function()
-                        {
-                            role.setAttr('zhengxie', 'xie')
-                            gs._addTextInfo('你已加入邪派')
-                            gs._showDialog('恭喜，以后打败正派那些伪君子就看你的了！赠送你一把小斧头作为礼物。')
-
-                            var attrs = {
-                                'imgSrc':'003-Weapon03',
-                                'attack':15,
-                                'name':'短剑',
-                                'part':'weapon',
-                                'descript':'一把小斧头，用起来非常顺手，增加15点攻击力',
-                            }
-                            gs.addBagItem(attrs)
-                        },
-                        function()
-                        {
-                            gs._closeDialog()
-                        },'行','算了')
-                    else
-                        gs._showDialog('你已经加入了门派 去做该做的事情去吧')
-                },
-            }
-            this.add_npc(10, 9, attrs)
-        }
-        {
-            var attrs = {
-                
-                'imgSrc':'006-Fighter06',
-                'spriteWidth':32,
-                'spriteHeight':48,
-                'npcName':'柳娟',
-                onRoleCloseTo:function(role, gs)
-                {
-                    if(role.getAttr('zhengxie') == null)
-                        gs._showDialog('不错 年轻人，你确定需要加入正派吗？',
-                        function()
-                        {
-                            role.setAttr('zhengxie', 'zheng')
-                            gs._addTextInfo('你已加入正派')
-                            gs._showDialog('恭喜，你已经是正派的成员了，赠送你一把短剑作为礼物，以后江湖路就看你的了！')
-
-                            var attrs = {
-                                'imgSrc':'001-Weapon01',
-                                'attack':10,
-                                'name':'短剑',
-                                'part':'weapon',
-                                'descript':'一把可以用来对付小动物的武器，增加10点攻击力',
-                            }
-                            gs.addBagItem(attrs)
-
-                        },
-                        function()
-                        {
-                            gs._closeDialog()
-                        },'行','算了')
-                    else
-                        gs._showDialog('你已经加入了门派 去做该做的事情去吧')
-                },
-            }
-            this.add_npc(5, 6, attrs)
-        }
-
-        {
-            var attrs = {
-                
+            var attrs = {               
                 'imgSrc':'023-Gunner01',
                 'spriteWidth':32,
                 'spriteHeight':48,
                 'speed':50,
                 'isRole':1,
+                'hp':50,
+                'max_hp':50,
+                'attack':5,
+                'defend':0,
+                'name':'張小凡',
             }
             this.add_role(3, 3, attrs)
         }
@@ -939,5 +859,16 @@ cc.Class({
         let bag = cc.find("Canvas/back/ui/bag")
         let bagScript = bag.getComponent('bagScript')
         bagScript.add_bag_item(itemAttrs)
+
+        this._addTextInfo('获得 '+ itemAttrs.name)
+    },
+    //添加铜钱
+    addBagCoin:function(num)
+    {
+        let bag = cc.find("Canvas/back/ui/bag")
+        let bagScript = bag.getComponent('bagScript')
+        bagScript.addCoin(num)
+
+        this._addTextInfo('获得 铜钱 '+ num)
     }
 });

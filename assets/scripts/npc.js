@@ -1,6 +1,5 @@
 
 var global = require('global')
-var config = require('config')
 var npcFunc = require('npcFunc')
 
 cc.Class({

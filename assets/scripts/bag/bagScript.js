@@ -29,6 +29,8 @@ cc.Class({
         items:{
             default:[],
         },
+
+        coin_:0,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -117,8 +119,15 @@ cc.Class({
         for(j = 0,len=this.items.length; j < len; j++) {
             ele = this.items[j]
             //设定位置
-            ele.node.setPosition(this.node.x - 200 + j*60, this.node.y + 80 - (Math.floor(j/6))*60)
+            ele.node.setPosition(this.node.x - 175 + (j%7)*60, this.node.y + 80 - (Math.floor(j/7))*60)
         }
         console.log('refreshBag2 '+this.items.length)
+    },
+
+    addCoin:function(num)
+    {
+        this.coin_ += num
+        let coinNode = global.getChildByName(this.node, "coin")
+        coinNode.getComponent(cc.Label).string = this.coin_
     },
 });
