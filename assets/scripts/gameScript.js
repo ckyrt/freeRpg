@@ -16,6 +16,7 @@ npcFunc.gs_ = this
 var itemConfig = require('itemConfig')
 var monsterConfig = require('monsterConfig')
 var npcConfig = require('npcConfig')
+var expConfig = require('expConfig')
 
 cc.Class({
     extends: cc.Component,
@@ -144,6 +145,19 @@ cc.Class({
             function(t){
                 let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
                 roleEquip.getComponent('RoleEquipScript').openRoleEquip()
+            },this)
+
+        //角色
+        let roleInfoBt = cc.find("Canvas/back/ui/roleInfoBt")
+        roleInfoBt.on(cc.Node.EventType.TOUCH_START,
+            function(t){
+                let roleInfo = cc.find("Canvas/back/ui/roleInfo")
+
+                let role = this.roles[0]
+                let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
+                let equipInfo = roleEquip.getComponent('RoleEquipScript')
+
+                roleInfo.getComponent('RoleInfoScript').openRoleInfo(this.roles[0], equipInfo)
             },this) 
 
         let mapNode = cc.find("Canvas/back/Map")
@@ -446,6 +460,8 @@ cc.Class({
                 'attack':5,
                 'defend':0,
                 'name':'張小凡',
+                'level':1,
+                'exp':0,
             }
             this.add_role(3, 3, attrs)
         }
@@ -870,5 +886,24 @@ cc.Class({
         bagScript.addCoin(num)
 
         this._addTextInfo('获得 铜钱 '+ num)
+    },
+    //添加经验
+    addRoleExp:function(num)
+    {
+        let role = this.roles[0]
+        let curExp = role.getAttr('exp')
+        curExp += num
+        let curLevel = role.getAttr('level')
+
+        let ret = expConfig.updateExp(curExp, curLevel)
+
+        role.setAttr('exp', ret.exp)
+        role.setAttr('level', ret.level)
+        this._addTextInfo('获得 经验 '+ num)
+
+        if(curLevel != ret.level)
+        {
+            this._addTextInfo('恭喜升级！到达 '+ ret.level + ' 级')
+        }
     }
 });

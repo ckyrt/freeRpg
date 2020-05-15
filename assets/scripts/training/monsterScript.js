@@ -82,4 +82,17 @@ cc.Class({
             return null
         return this.allAttrs[att]
     },
+
+    //得到总属性
+    getAttrWithEquip:function(att)
+    {
+        if(!this.getAttr('isRole'))
+        {
+            return this.getAttr(att)
+        }
+        
+        let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
+        let equipInfo = roleEquip.getComponent('RoleEquipScript')
+        return this.getAttr(att) + equipInfo.getEquipAttr(att)
+    },
 });

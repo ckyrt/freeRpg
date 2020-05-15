@@ -1,8 +1,8 @@
 
 var monsterConfig = {
     '野牛':{
-        'hp':5,
-        'max_hp':5,
+        'hp':50,
+        'max_hp':50,
         'imgSrc':'066-Beast04',
         'attack':3,
         'defend':0,

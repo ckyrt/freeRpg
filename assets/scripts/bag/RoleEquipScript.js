@@ -51,6 +51,7 @@ cc.Class({
         let shield = global.getChildByName(this.node, "shield")
 
         this.allItems = {}
+        this.allAttrs = {}
     },
 
     // update (dt) {},
@@ -73,7 +74,7 @@ cc.Class({
         //如果已存在那麽先卸下
         if(this.allItems[part] != null)
         {
-            this.takeoffItem(part)
+            this.takeoffEquipItemToBag(part)
         }
 
         //穿上新的
@@ -126,7 +127,19 @@ cc.Class({
             //设定位置
             ele.node.setPosition(partNode.x, partNode.y)
         }
-        
-        console.log('refreshEquip2 '+this.allItems.length)
+    },
+
+    getEquipAttr:function(attr_name)
+    {
+        let v = 0
+        for(var part in this.allItems)
+        {
+            let ele = this.allItems[part]
+            if(ele == null)
+                continue
+            
+            v += ele.getAttr(attr_name)
+        }
+        return v
     },
 });

@@ -72,6 +72,8 @@ cc.Class({
         let attacker = this.yourTurn?this.role:this.monster
         let defender = this.yourTurn?this.monster:this.role
 
+        this.playAttackAnim_(attacker, defender)
+
         let damage = this._computeDamage(attacker, defender)
         this._executeDamage(defender, damage, 'normal attack')
 
@@ -87,7 +89,9 @@ cc.Class({
     //计算 attacker 对 defender造成的伤害（最终扣血的多少）
     _computeDamage: function(attacker, defender)
     {
-        let damage = attacker.getAttr('attack') - defender.getAttr('defend')
+        //使用带装备的总属性
+        let damage = attacker.getAttrWithEquip('attack') - defender.getAttrWithEquip('defend')
+        
         if(damage < 1)
             damage = 1
         this.gs_._addTextInfo(attacker.getAttr('name')+' 对 '+defender.getAttr('name')+' 造成 '+damage+' 点伤害')
@@ -102,6 +106,12 @@ cc.Class({
         if(curHp < 1)
             curHp = 0
         unit.setAttr('hp', curHp)
+    },
+
+    //攻击动画
+    playAttackAnim_:function(attacker, defender)
+    {
+
     },
 
     //创建一个怪物  
@@ -132,12 +142,13 @@ cc.Class({
         if(success)
         {
             this.gs_._addTextInfo('战斗胜利')
-            //执行掉落
+            //执行 掉落 经验 铜钱
             let exp = monster.getAttr('exp')
             let coin = monster.getAttr('coin')
             let dropstr = monster.getAttr('drop')
             dropConfig.dropToRole(this.gs_, dropstr)
             this.gs_.addBagCoin(coin)
+            this.gs_.addRoleExp(exp)
         }
         else
         {
