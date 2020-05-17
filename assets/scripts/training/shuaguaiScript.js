@@ -77,17 +77,18 @@ cc.Class({
         let attacker = this.yourTurn?this.role:this.monster
         let defender = this.yourTurn?this.monster:this.role
 
-        this.playAttackAnim_(attacker, defender)
-
-        let damage = this._computeDamage(attacker, defender)
-        this._executeDamage(defender, damage, 'normal attack')
-
         console.log('round')
         if(attacker.getAttr('hp') == 0 || defender.getAttr('hp') == 0)
         {
             console.log('finish')
-            this._finishFight(this.role, this.monster, this.role.getAttr('hp')>0)
+            this._finishFight(this.role, this.monster, this.role.getAttr('hp') > 0)
+            return
         }
+
+        this.playAttackAnim_(attacker, defender)
+
+        let damage = this._computeDamage(attacker, defender)
+        this._executeDamage(defender, damage, 'normal attack')
         this.yourTurn = !this.yourTurn
     },
 

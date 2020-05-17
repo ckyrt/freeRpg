@@ -98,6 +98,18 @@ var npcConfig = {
             },'好','算了')
         },
     },
+
+    '平十指':{
+                
+        'imgSrc':'128-Noble03',
+        'spriteWidth':32,
+        'spriteHeight':48,
+        'npcName':'平十指',
+        onRoleCloseTo:function(role, gs)
+        {
+            gs.openShopPanel()
+        },
+    },
 }
 module.exports = npcConfig
 

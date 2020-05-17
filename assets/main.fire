@@ -11783,6 +11783,9 @@
     "npc_prefab": {
       "__uuid__": "fee8ff42-f67d-4020-a22f-e59f77703c2e"
     },
+    "shopPanel_prefab": {
+      "__uuid__": "8f58d7a0-b45a-4db8-bf39-eabf81badd29"
+    },
     "items": [],
     "npcs": [],
     "roles": [],

@@ -41,9 +41,9 @@ cc.Class({
 
     // update (dt) {},
 
-    initBagItem(attrs, bagOrBody)
+    initBagItem(attrs, kind)
     {
-        this.bagOrBody_ = bagOrBody
+        this.kind_ = kind
         this.allAttrs = attrs//JSON.parse(JSON.stringify(attrs)) //attrs//深拷贝
         //加载图片
         var url = 'textures/Icons/' + this.allAttrs['imgSrc']

@@ -65,6 +65,12 @@ cc.Class({
             default:null,
         },
 
+        //商店界面
+        shopPanel_prefab:{
+            type:cc.Prefab,
+            default:null,
+        },
+
         //所有item
         items:{
             default:[],
@@ -456,6 +462,7 @@ cc.Class({
         this.add_npc(5, 6, npcConfig['柳娟'])
         this.add_npc(10, 9, npcConfig['温有余'])
         this.add_npc(5, 10, npcConfig['王二牛'])
+        this.add_npc(15, 10, npcConfig['平十指'])
         {
             var attrs = {               
                 'imgSrc':'023-Gunner01',
@@ -891,9 +898,17 @@ cc.Class({
     {
         let bag = cc.find("Canvas/back/ui/bag")
         let bagScript = bag.getComponent('bagScript')
-        bagScript.addCoin(num)
-
-        this._addTextInfo('获得 铜钱 '+ num)
+        let ret = bagScript.addCoin(num)
+        if(ret == 'success')
+        {
+            let str = num>0?'获得':'扣除'
+            this._addTextInfo( str+' 铜钱 '+ num)
+        }
+        else
+        {
+            this._addTextInfo('铜钱不足')
+        }
+        return ret
     },
     //添加经验
     addRoleExp:function(num)
@@ -913,5 +928,22 @@ cc.Class({
         {
             this._addTextInfo('恭喜升级！到达 '+ ret.level + ' 级')
         }
+    },
+
+    //打开商店界面
+    openShopPanel:function()
+    {
+        var prefab = cc.instantiate(this.shopPanel_prefab)
+        this.node.addChild(prefab)
+        prefab.setPosition(0,0)
+        this.shopPanel_  = prefab.getComponent("shopPanelScript")
+        this.shopPanel_.showShopItems()
+    },
+
+    //关闭商店界面
+    closeShopPanel:function()
+    {
+        this.shopPanel_.closeShopPanel()
+        this.shopPanel_ = null
     }
 });

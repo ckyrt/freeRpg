@@ -8,6 +8,7 @@ var itemConfig = {
         'attack-max':12,
         'part':'weapon',
         'descript':'增加攻击力8-12',
+        'coin':10,
     },
     '铁刀':{
         'name':'铁刀',
@@ -16,6 +17,7 @@ var itemConfig = {
         'attack-max':20,
         'part':'weapon',
         'descript':'增加攻击力12-20',
+        'coin':10,
     },
     '钢刀':{
         'name':'钢刀',
@@ -24,6 +26,7 @@ var itemConfig = {
         'attack-max':31,
         'part':'weapon',
         'descript':'增加攻击力18-31',
+        'coin':10,
     },
     '半月刀':{
         'name':'半月刀',
@@ -32,6 +35,7 @@ var itemConfig = {
         'attack-max':37,
         'part':'weapon',
         'descript':'增加攻击力24-37',
+        'coin':10,
     },
     '精钢刀':{
         'name':'精钢刀',
@@ -40,6 +44,7 @@ var itemConfig = {
         'attack-max':53,
         'part':'weapon',
         'descript':'增加攻击力32-53',
+        'coin':10,
     },
     '雁月刀':{
         'name':'雁月刀',
@@ -48,6 +53,7 @@ var itemConfig = {
         'attack-max':61,
         'part':'weapon',
         'descript':'增加攻击力40-61',
+        'coin':10,
     },
     '赤血刀':{
         'name':'赤血刀',
@@ -56,6 +62,7 @@ var itemConfig = {
         'attack-max':75,
         'part':'weapon',
         'descript':'增加攻击力50-75',
+        'coin':10,
     },
     '重曲刀':{
         'name':'重曲刀',
@@ -64,6 +71,7 @@ var itemConfig = {
         'attack-max':83,
         'part':'weapon',
         'descript':'增加攻击力62-83',
+        'coin':10,
     },
 
     '无名战袍':{
@@ -72,6 +80,7 @@ var itemConfig = {
         'defend':12,
         'part':'cloth',
         'descript':'增加防御力12',
+        'coin':10,
     },
     '金丝战袍':{
         'name':'金丝战袍',
@@ -79,6 +88,7 @@ var itemConfig = {
         'defend':16,
         'part':'cloth',
         'descript':'增加防御力16',
+        'coin':10,
     },
     '乌蚕战袍':{
         'name':'乌蚕战袍',
@@ -86,6 +96,7 @@ var itemConfig = {
         'defend':20,
         'part':'cloth',
         'descript':'增加防御力20',
+        'coin':10,
     },
 }
 module.exports = itemConfig

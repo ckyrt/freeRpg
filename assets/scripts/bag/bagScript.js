@@ -38,19 +38,7 @@ cc.Class({
 
     onLoad () {
         {
-            this.add_bag_item(itemConfig['直刀'])
-            this.add_bag_item(itemConfig['铁刀'])
-            this.add_bag_item(itemConfig['钢刀'])
-            this.add_bag_item(itemConfig['半月刀'])
-
-            this.add_bag_item(itemConfig['精钢刀'])
-            this.add_bag_item(itemConfig['雁月刀'])
-            this.add_bag_item(itemConfig['赤血刀'])
-            this.add_bag_item(itemConfig['重曲刀'])
-
-            this.add_bag_item(itemConfig['无名战袍'])
-            this.add_bag_item(itemConfig['金丝战袍'])
-            this.add_bag_item(itemConfig['乌蚕战袍'])
+            this.addCoin(1000)
         }
     },
 
@@ -140,7 +128,10 @@ cc.Class({
     addCoin:function(num)
     {
         this.coin_ += num
+        if(this.coin_ < 0)
+            return 'fail'
         let coinNode = global.getChildByName(this.node, "coin")
         coinNode.getComponent(cc.Label).string = this.coin_
+        return 'success'
     },
 });

@@ -20,6 +20,7 @@ var monsterConfig = {
         'defend':15,
         'name':'蛤蟆',
         'exp':8,
+        'coin':10,
     },
     '狐狸':{
         'hp':100,
@@ -29,6 +30,7 @@ var monsterConfig = {
         'defend':18,
         'name':'狐狸',
         'exp':10,
+        'coin':10,
     },
     '狂牛':{
         'hp':120,
@@ -38,6 +40,7 @@ var monsterConfig = {
         'defend':30,
         'name':'狂牛',
         'exp':12,
+        'coin':10,
     },
     '野猪':{
         'hp':160,
@@ -47,6 +50,7 @@ var monsterConfig = {
         'defend':35,
         'name':'怪物5',
         'exp':15,
+        'coin':10,
     },
 
     '灰狼':{
@@ -57,6 +61,7 @@ var monsterConfig = {
         'attack':55,
         'defend':40,
         'exp':20,
+        'coin':10,
     },
 
     '熊':{
@@ -67,6 +72,7 @@ var monsterConfig = {
         'attack':75,
         'defend':45,
         'exp':30,
+        'coin':10,
     },
     '灰狼王':{
         'name':'灰狼王',
@@ -76,6 +82,7 @@ var monsterConfig = {
         'attack':85,
         'defend':60,
         'exp':35,
+        'coin':10,
     },
     '三尾狐':{
         'name':'三尾狐',
@@ -85,6 +92,7 @@ var monsterConfig = {
         'attack':100,
         'defend':50,
         'exp':40,
+        'coin':10,
     },
     '伐木工':{
         'name':'伐木工',
@@ -94,6 +102,7 @@ var monsterConfig = {
         'attack':110,
         'defend':55,
         'exp':45,
+        'coin':10,
     },
     '血狼':{
         'name':'血狼',
@@ -103,6 +112,7 @@ var monsterConfig = {
         'attack':145,
         'defend':70,
         'exp':50,
+        'coin':10,
     },
     '花熊':{
         'name':'花熊',
@@ -112,6 +122,7 @@ var monsterConfig = {
         'attack':150,
         'defend':75,
         'exp':55,
+        'coin':10,
     },
     '大猿':{
         'name':'大猿',
@@ -121,6 +132,7 @@ var monsterConfig = {
         'attack':155,
         'defend':80,
         'exp':60,
+        'coin':10,
     },
     '小僵尸':{
         'name':'小僵尸',
@@ -130,6 +142,7 @@ var monsterConfig = {
         'attack':160,
         'defend':90,
         'exp':65,
+        'coin':10,
     },
     '小蓝鬼':{
         'name':'小蓝鬼',
@@ -139,6 +152,7 @@ var monsterConfig = {
         'attack':165,
         'defend':95,
         'exp':70,
+        'coin':10,
     },
     '舞女':{
         'name':'舞女',
@@ -148,6 +162,7 @@ var monsterConfig = {
         'attack':175,
         'defend':100,
         'exp':75,
+        'coin':10,
     },
     '破解僧':{
         'name':'破解僧',
@@ -157,6 +172,7 @@ var monsterConfig = {
         'attack':180,
         'defend':110,
         'exp':80,
+        'coin':10,
     },
     '大块头山贼':{
         'name':'大块头山贼',
@@ -166,6 +182,7 @@ var monsterConfig = {
         'attack':210,
         'defend':120,
         'exp':120,
+        'coin':10,
     },
     '巨斧山贼':{
         'name':'巨斧山贼',
@@ -175,6 +192,7 @@ var monsterConfig = {
         'attack':220,
         'defend':130,
         'exp':130,
+        'coin':10,
     },
 }
 module.exports = monsterConfig

@@ -56,13 +56,17 @@ cc.Class({
 
         let handleBt = global.getChildByName(this.node, "handleBt")
         let btStr = global.getChildByName(handleBt, "str")
-        if(this.item_.bagOrBody_ == 'inBag')
+        if(this.item_.kind_ == 'inBag')
         {
             btStr.getComponent(cc.Label).string = '穿上'
         }
-        else if(this.item_.bagOrBody_ == 'onBody')
+        else if(this.item_.kind_ == 'onBody')
         {
             btStr.getComponent(cc.Label).string = '卸下'
+        }
+        else if(this.item_.kind_ == 'inShop')
+        {
+            btStr.getComponent(cc.Label).string = '购买'
         }
     },
 
@@ -72,15 +76,19 @@ cc.Class({
         let equipScript = roleEquip.getComponent('RoleEquipScript')
 
         let part = this.item_.getAttr('part')
-        if(this.item_.bagOrBody_ == 'inBag')
+        if(this.item_.kind_ == 'inBag')
         {
             //背包里的 穿到身上
             let ret = equipScript.wearEquipItemFromBag(part, this.item_)
         }
-        else if(this.item_.bagOrBody_ == 'onBody')
+        else if(this.item_.kind_ == 'onBody')
         {
             //身上的 卸下到背包
             let ret = equipScript.takeoffEquipItemToBag(part)
+        }
+        else if(this.item_.kind_ == 'inShop')
+        {
+            this.gs_.shopPanel_.buyShopItemToBag(this.item_)
         }
         this.closeItemInfo()
     },
