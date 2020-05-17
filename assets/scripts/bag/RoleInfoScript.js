@@ -1,5 +1,5 @@
 var global = require('global')
-
+var expConfig = require('expConfig')
 
 cc.Class({
     extends: cc.Component,
@@ -77,12 +77,13 @@ cc.Class({
         this.defend_v.string = role.getAttr('defend')
         this.maxhp_v.string = role.getAttr('max_hp')
         this.level_v.string = role.getAttr('level')
-        this.exp_v.string = role.getAttr('exp')
+        this.exp_v.string = role.getAttr('exp') + '/' + expConfig.getLevelExp(role.getAttr('level'))
 
-        let equip_attack = equip.getEquipAttr('attack')
+        let equip_attack_min = equip.getEquipAttr('attack-min')
+        let equip_attack_max = equip.getEquipAttr('attack-max')
         let equip_defend = equip.getEquipAttr('defend')
         let equip_max_hp = equip.getEquipAttr('max_hp')
-        this.attack_equip_v.string = equip_attack > 0 ?'+ '+equip_attack:''
+        this.attack_equip_v.string = equip_attack_min > 0 ?'+ '+equip_attack_min+'-'+equip_attack_max:''
         this.defend_equip_v.string = equip_defend > 0 ?'+ '+equip_defend:''
         this.maxhp_equip_v.string = equip_max_hp > 0 ?'+ '+equip_max_hp:''
     },

@@ -55,8 +55,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -200.769,
-        63.774,
+        0,
+        0,
         0,
         0,
         0,
@@ -76,8 +76,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 3,
+    "groupIndex": 3,
     "_id": ""
   },
   {
@@ -140,8 +140,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 3,
+    "groupIndex": 3,
     "_id": ""
   },
   {
@@ -228,6 +228,9 @@
     },
     "_enabled": true,
     "uid": 0,
+    "itemInfoDialog_prefab": {
+      "__uuid__": "01affa54-cba9-4a28-97c3-7b4b07d3dda5"
+    },
     "_id": ""
   },
   {

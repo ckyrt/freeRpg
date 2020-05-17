@@ -41,13 +41,12 @@ cc.Class({
 
     closeItemInfo:function(t)
     {
-        this.node.x = -1000
+        this.node.destroy()
     },
 
     openItemInfo:function(bagItem)
     {
         this.item_ = bagItem
-        this.node.x = 0
 
         let itemName = global.getChildByName(this.node, "itemName")
         let itemDescript = global.getChildByName(this.node, "itemDescript")

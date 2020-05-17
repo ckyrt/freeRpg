@@ -1,4 +1,5 @@
 var global = require('global')
+var itemConfig = require('itemConfig')
 
 cc.Class({
     extends: cc.Component,
@@ -37,14 +38,19 @@ cc.Class({
 
     onLoad () {
         {
-            var attrs = {
-                'imgSrc':'009-Shield01',
-                'defend':10,
-                'name':'木盾',
-                'part':'shield',
-                'descript':'有了它 可以增加你的抗击打能力，增加防御力10点',
-            }
-            this.add_bag_item(attrs)
+            this.add_bag_item(itemConfig['直刀'])
+            this.add_bag_item(itemConfig['铁刀'])
+            this.add_bag_item(itemConfig['钢刀'])
+            this.add_bag_item(itemConfig['半月刀'])
+
+            this.add_bag_item(itemConfig['精钢刀'])
+            this.add_bag_item(itemConfig['雁月刀'])
+            this.add_bag_item(itemConfig['赤血刀'])
+            this.add_bag_item(itemConfig['重曲刀'])
+
+            this.add_bag_item(itemConfig['无名战袍'])
+            this.add_bag_item(itemConfig['金丝战袍'])
+            this.add_bag_item(itemConfig['乌蚕战袍'])
         }
     },
 
@@ -88,6 +94,9 @@ cc.Class({
         item.initBagItem(attrs, 'inBag')
 
         this._add_item(item)
+
+        this.refreshBag()
+
         return item
     },
 
@@ -99,6 +108,8 @@ cc.Class({
             this._remove_item(item)
             item.node.destroy()
         }
+
+        this.refreshBag()
     },
 
     openBag:function()
@@ -116,10 +127,12 @@ cc.Class({
     refreshBag:function()
     {
         console.log('refreshBag '+this.items.length)
+        let j = 0
+        let len = 0
         for(j = 0,len=this.items.length; j < len; j++) {
-            ele = this.items[j]
+            let ele = this.items[j]
             //设定位置
-            ele.node.setPosition(this.node.x - 175 + (j%7)*60, this.node.y + 80 - (Math.floor(j/7))*60)
+            ele.node.setPosition(-175 + (j%7)*60, 80 - (Math.floor(j/7))*60)
         }
         console.log('refreshBag2 '+this.items.length)
     },

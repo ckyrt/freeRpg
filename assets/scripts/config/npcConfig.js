@@ -35,8 +35,8 @@ var npcConfig = {
                 {
                     role.setAttr('zhengxie', 'zheng')
                     gs._addTextInfo('你已加入正派')
-                    gs._showDialog('恭喜，你已经是正派的成员了，赠送你一把短剑作为礼物，以后江湖路就看你的了！')
-                    gs.addBagItem(itemConfig['短剑'])
+                    gs._showDialog('恭喜，你已经是正派的成员了，赠送你一个礼物，以后江湖路就看你的了！')
+                    //gs.addBagItem(itemConfig['重曲刀'])
 
                 },
                 function()
@@ -67,8 +67,8 @@ var npcConfig = {
                 {
                     role.setAttr('zhengxie', 'xie')
                     gs._addTextInfo('你已加入邪派')
-                    gs._showDialog('恭喜，以后打败正派那些伪君子就看你的了！赠送你一把小斧头作为礼物。')
-                    gs.addBagItem(itemConfig['石斧'])
+                    gs._showDialog('恭喜，以后打败正派那些伪君子就看你的了！赠送你一个礼物。')
+                    //gs.addBagItem(itemConfig['赤血刀'])
                 },
                 function()
                 {
@@ -90,7 +90,7 @@ var npcConfig = {
             gs._showDialog('最近很多小动物骚扰我们，你能帮助铲除吗？',
             function()
             {
-                gs.node.getComponent('shuaguaiScript').createAFight(role.allAttrs, monsterConfig['野牛'])
+                gs.node.getComponent('shuaguaiScript').createAFight(role.allAttrs, monsterConfig['野猫'])
             },
             function()
             {

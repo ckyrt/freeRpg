@@ -51,7 +51,6 @@ cc.Class({
         let shield = global.getChildByName(this.node, "shield")
 
         this.allItems = {}
-        this.allAttrs = {}
     },
 
     // update (dt) {},

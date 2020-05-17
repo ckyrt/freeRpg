@@ -36,6 +36,11 @@ cc.Class({
             default:null,
         },
 
+        
+        numberJump_prefab:{
+            type:cc.Prefab,
+            default:null,
+        },
         //一场 战斗 包括以下要素
         //玩家 和 怪物，各有各自的属性
         //5秒一回合，轮番攻击对方，直到一方血量为0 结束。
@@ -106,11 +111,14 @@ cc.Class({
         if(curHp < 1)
             curHp = 0
         unit.setAttr('hp', curHp)
+        
+        this._playNumberJump(-damage, unit.node.x, unit.node.y + unit.node.height)
     },
 
     //攻击动画
     playAttackAnim_:function(attacker, defender)
     {
+        //冲过去 停留 然后再退回来
 
     },
 
@@ -124,6 +132,15 @@ cc.Class({
 
         monsterPreb.setPosition(x, y)
         return monster
+    },
+
+    //跳数字
+    _playNumberJump:function(num, x, y)
+    {
+        var numberJump = cc.instantiate(this.numberJump_prefab)
+        this.node.addChild(numberJump)
+        numberJump.setPosition(x, y)
+        numberJump.getComponent('numberJumpScript').playJump(num)
     },
 
     //初始化战场
@@ -144,11 +161,15 @@ cc.Class({
             this.gs_._addTextInfo('战斗胜利')
             //执行 掉落 经验 铜钱
             let exp = monster.getAttr('exp')
-            let coin = monster.getAttr('coin')
-            let dropstr = monster.getAttr('drop')
-            dropConfig.dropToRole(this.gs_, dropstr)
-            this.gs_.addBagCoin(coin)
             this.gs_.addRoleExp(exp)
+
+            let coin = monster.getAttr('coin')
+            if(coin)
+                this.gs_.addBagCoin(coin)
+
+            let dropstr = monster.getAttr('drop')
+            if(dropstr)
+                dropConfig.dropToRole(this.gs_, dropstr)  
         }
         else
         {

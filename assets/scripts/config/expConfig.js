@@ -240,8 +240,11 @@ var expConfig = {
                 return {exp:curExp, level:curLevel}
             }
         }
+    },
 
-        
+    getLevelExp:function(level)
+    {
+        return expData[level-1][1]
     },
 }
 module.exports = expConfig

@@ -93,6 +93,17 @@ cc.Class({
         
         let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
         let equipInfo = roleEquip.getComponent('RoleEquipScript')
-        return this.getAttr(att) + equipInfo.getEquipAttr(att)
+
+        if(att == 'attack')
+        {
+            //攻击力 特殊 取区间
+            let attack_min = equipInfo.getEquipAttr('attack-min')
+            let attack_max = equipInfo.getEquipAttr('attack-max')
+            return this.getAttr(att) + global.random(attack_min, attack_max)
+        }
+        else
+        {
+            return this.getAttr(att) + equipInfo.getEquipAttr(att)
+        }
     },
 });

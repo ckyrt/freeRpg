@@ -20,6 +20,11 @@ cc.Class({
         //     }
         // },
         uid:0,
+        //iteminfo
+        itemInfoDialog_prefab:{
+            type:cc.Prefab,
+            default:null,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -60,8 +65,12 @@ cc.Class({
 
     clickFunc:function(t)
     {
-        let itemInfo = cc.find("Canvas/back/ui/itemInfoDialog")
-        itemInfo.getComponent('itemInfoScript').openItemInfo(this)
+        var itemPreb = cc.instantiate(this.itemInfoDialog_prefab)
+        this.gs_.node.addChild(itemPreb)
+        itemPreb.setPosition(this.node.x, this.node.y)
+        itemPreb.getComponent("itemInfoScript").openItemInfo(this)
+
+        console.log(this.node.x+','+this.node.y)
     },
 
     setAttr: function(att, v)

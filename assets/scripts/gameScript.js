@@ -160,6 +160,14 @@ cc.Class({
                 roleInfo.getComponent('RoleInfoScript').openRoleInfo(this.roles[0], equipInfo)
             },this) 
 
+        //刷怪
+        let trainBt = cc.find("Canvas/back/ui/trainBt")
+        trainBt.on(cc.Node.EventType.TOUCH_START,
+            function(t){
+                let panel = cc.find("Canvas/back/ui/trainPanel")
+                panel.getComponent('trainPanelScript').openTrainPanel()
+            },this)
+
         let mapNode = cc.find("Canvas/back/Map")
         global.X_OFFSET = mapNode.x
         global.Y_OFFSET = mapNode.y
