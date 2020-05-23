@@ -84,15 +84,19 @@ cc.Class({
     },
 
     //得到总属性
-    getAttrWithEquip:function(att)
+    getAttrWithEquipWithQigong:function(att)
     {
         if(!this.getAttr('isRole'))
         {
             return this.getAttr(att)
         }
         
+        //装备
         let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
         let equipInfo = roleEquip.getComponent('RoleEquipScript')
+        //气功
+        let panel = cc.find("Canvas/back/ui/qigongPanel")
+        let qigongPanel = panel.getComponent('qigongPanelScript')
 
         if(att == 'attack')
         {
@@ -103,7 +107,7 @@ cc.Class({
         }
         else
         {
-            return this.getAttr(att) + equipInfo.getEquipAttr(att)
+            return this.getAttr(att) + equipInfo.getEquipAttr(att) + qigongPanel.getQigongAttr(att)
         }
     },
 });

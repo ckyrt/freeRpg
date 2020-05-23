@@ -174,6 +174,14 @@ cc.Class({
                 panel.getComponent('trainPanelScript').openTrainPanel()
             },this)
 
+        //气功
+        let qigongBt = cc.find("Canvas/back/ui/qigongBt")
+        qigongBt.on(cc.Node.EventType.TOUCH_START,
+            function(t){
+                let panel = cc.find("Canvas/back/ui/qigongPanel")
+                panel.getComponent('qigongPanelScript').openQigongPanel()
+            },this)
+
         let mapNode = cc.find("Canvas/back/Map")
         global.X_OFFSET = mapNode.x
         global.Y_OFFSET = mapNode.y

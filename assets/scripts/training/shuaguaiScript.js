@@ -96,7 +96,7 @@ cc.Class({
     _computeDamage: function(attacker, defender)
     {
         //使用带装备的总属性
-        let damage = attacker.getAttrWithEquip('attack') - defender.getAttrWithEquip('defend')
+        let damage = attacker.getAttrWithEquipWithQigong('attack') - defender.getAttrWithEquipWithQigong('defend')
         
         if(damage < 1)
             damage = 1
