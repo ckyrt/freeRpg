@@ -57,20 +57,31 @@ cc.Class({
 
             console.log('npc init load res')
 　　　　})
+
+        //战斗 装备气功等最大血量添加到身上
+        if(this.getAttr('isRole'))
+        {
+            this.setAttr('hp', this.getFightAttr('max_hp'))
+        }
     },
 
     setAttr: function(att, v)
     {
         let v1 = this.getAttr(att)
-
         if(v == v1)
             return
+        
+        //血量不大于最大血量
+        if(att == 'hp' && v > this.getFightAttr('max_hp'))
+        {
+            v = this.getFightAttr('max_hp')
+        }
 
         this.allAttrs[att] = v
 
         if(att == 'hp')
         {
-            this.node.getChildByName('hp').getChildByName('cur_hp').getComponent( cc.Sprite ).fillRange = v / this.getAttr('max_hp')
+            this.node.getChildByName('hp').getChildByName('cur_hp').getComponent( cc.Sprite ).fillRange = v / this.getFightAttr('max_hp')
         }
     },
 
@@ -84,30 +95,14 @@ cc.Class({
     },
 
     //得到总属性
-    getAttrWithEquipWithQigong:function(att)
+    getFightAttr:function(att)
     {
         if(!this.getAttr('isRole'))
         {
             return this.getAttr(att)
         }
-        
-        //装备
-        let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
-        let equipInfo = roleEquip.getComponent('RoleEquipScript')
-        //气功
-        let panel = cc.find("Canvas/back/ui/qigongPanel")
-        let qigongPanel = panel.getComponent('qigongPanelScript')
 
-        if(att == 'attack')
-        {
-            //攻击力 特殊 取区间
-            let attack_min = equipInfo.getEquipAttr('attack-min')
-            let attack_max = equipInfo.getEquipAttr('attack-max')
-            return this.getAttr(att) + global.random(attack_min, attack_max)
-        }
-        else
-        {
-            return this.getAttr(att) + equipInfo.getEquipAttr(att) + qigongPanel.getQigongAttr(att)
-        }
+        let roleInfo = cc.find("Canvas/back/ui/roleInfo").getComponent('RoleInfoScript')
+        return roleInfo.getFightAttr(att)
     },
 });

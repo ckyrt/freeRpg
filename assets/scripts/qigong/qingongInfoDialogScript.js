@@ -50,7 +50,7 @@ cc.Class({
         let descript = global.getChildByName(this.node, "descript")
         
 
-        let descStr = qinggong.descript + '\n(下一级'+ qinggong.descript+')'
+        let descStr = qinggong.descript + '\n('+ qinggong.descript+')'
         let qigongName = qinggong.name
         let curNum = qinggong.nums[level]
         let nextNum = qinggong.nums[level+1]

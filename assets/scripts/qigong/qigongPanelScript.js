@@ -42,14 +42,8 @@ cc.Class({
         global.gs_ = this.gs_
 
         this.qigongItems_ = {}
-    },
 
-    // update (dt) {},
-
-    openQigongPanel:function()
-    {
-        this.node.x = 0
-
+        
         let i = 0
         for(var k in qigongConfig)
         {
@@ -67,7 +61,14 @@ cc.Class({
             qigongItem.setLevel(0)
 
             this.qigongItems_[qinggong.att] = qigongItem
-        } 
+        }
+    },
+
+    // update (dt) {},
+
+    openQigongPanel:function()
+    {
+        this.node.x = 0 
     },
 
     closeQigongPanel:function(t)
@@ -78,8 +79,9 @@ cc.Class({
     getQigongAttr:function(att)
     {
         if(qigongConfig[att] == null)
-            return
-        let item = this.qigongItems_[att] 
+            return 0
+        console.log('getQigongAttr:'+ att)
+        let item = this.qigongItems_[att]
         let attLevel = item.getCurLevel()
         return qigongConfig[att].nums[attLevel]
     },

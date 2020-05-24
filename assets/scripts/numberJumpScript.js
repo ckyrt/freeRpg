@@ -44,9 +44,10 @@ cc.Class({
         }
     },
 
-    playJump(num)
+    playJump(txt, color)
     {
-        this.node.getComponent(cc.Label).string = num
+        this.node.color = color//new cc.color(255,0,0)
+        this.node.getComponent(cc.Label).string = txt
         this.startY = this.node.y
 
         var interval = 1

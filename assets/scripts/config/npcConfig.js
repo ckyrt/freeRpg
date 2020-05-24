@@ -107,7 +107,16 @@ var npcConfig = {
         'npcName':'平十指',
         onRoleCloseTo:function(role, gs)
         {
-            gs.openShopPanel()
+            gs._showDialog('走过路过不要错过！客观需要点什么嘛..',
+            function()
+            {
+                gs._closeDialog()
+                gs.openShopPanel()
+            },
+            function()
+            {
+                gs._closeDialog()
+            },'嗯','算了')
         },
     },
 }

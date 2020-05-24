@@ -158,12 +158,7 @@ cc.Class({
         roleInfoBt.on(cc.Node.EventType.TOUCH_START,
             function(t){
                 let roleInfo = cc.find("Canvas/back/ui/roleInfo")
-
-                let role = this.roles[0]
-                let roleEquip = cc.find("Canvas/back/ui/roleEquipInfo")
-                let equipInfo = roleEquip.getComponent('RoleEquipScript')
-
-                roleInfo.getComponent('RoleInfoScript').openRoleInfo(this.roles[0], equipInfo)
+                roleInfo.getComponent('RoleInfoScript').openRoleInfo(this.roles[0])
             },this) 
 
         //刷怪

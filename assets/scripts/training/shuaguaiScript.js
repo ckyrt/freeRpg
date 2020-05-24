@@ -1,5 +1,6 @@
 var monsterConfig = require('monsterConfig')
 var dropConfig = require('dropConfig')
+var global = require('global')
 
 cc.Class({
     extends: cc.Component,
@@ -87,33 +88,101 @@ cc.Class({
 
         this.playAttackAnim_(attacker, defender)
 
-        let damage = this._computeDamage(attacker, defender)
-        this._executeDamage(defender, damage, 'normal attack')
+        this._computeDamage(attacker, defender)
         this.yourTurn = !this.yourTurn
     },
 
     //计算 attacker 对 defender造成的伤害（最终扣血的多少）
     _computeDamage: function(attacker, defender)
     {
-        //使用带装备的总属性
-        let damage = attacker.getAttrWithEquipWithQigong('attack') - defender.getAttrWithEquipWithQigong('defend')
+        let damage = 0
+        let damageType = 'normal'
+        //闪避 命中
+        let avoid = defender.getFightAttr('avoid_rate') - attacker.getFightAttr('accurate_rate')
+        if(avoid > 0 && avoid >= global.random(0, 100))
+        {
+            //闪避
+            damage = 0
+            damageType = 'avoid'
+        }
+        else
+        {
+            //使用带装备的总属性
+            damage = attacker.getFightAttr('attack') - defender.getFightAttr('defend')        
+            if(damage < 1)
+            {
+                damage = 1
+            }
         
-        if(damage < 1)
-            damage = 1
-        this.gs_._addTextInfo(attacker.getAttr('name')+' 对 '+defender.getAttr('name')+' 造成 '+damage+' 点伤害')
-        return damage
+            let critRate = attacker.getFightAttr('crit_rate')
+            let critMulti = attacker.getFightAttr('crit_multi')
+            //是否暴击
+            if(critRate > 0 && critRate >= global.random(0, 100))
+            {
+                //暴击
+                damage = damage * (100+critMulti) / 100
+                damageType = 'crit'
+            }
+
+            //吸血计算
+            let suck_rate = attacker.getFightAttr('suck_rate')
+            let suck_percent = attacker.getFightAttr('suck_percent')
+            if(suck_rate > 0 && suck_rate >= global.random(0, 100))
+            {
+                //吸血
+                let blood = damage * suck_percent / 100
+                if(blood < 1)
+                    blood = 1
+                this._executeDamage(defender, attacker, blood, 'suck')
+                this.gs_._addTextInfo(attacker.getAttr('name') + ' 吸血 '+blood+' 点')
+            }
+
+            //反伤计算
+            let fanshang_rate = defender.getFightAttr('fanshang_rate')
+            if(fanshang_rate > 0 && fanshang_rate >= global.random(0, 100))
+            {
+                //反伤
+                let blood = -damage
+                this._executeDamage(defender, attacker, blood, 'fanshang')
+                this.gs_._addTextInfo(attacker.getAttr('name') + ' 被反伤 '+blood+' 点')
+            }
+        }
+
+        this._executeDamage(attacker, defender, -damage, damageType)
+        this.gs_._addTextInfo(attacker.getAttr('name')+' 对 '+ defender.getAttr('name') + ' 造成 '+damage+' 点伤害')
     },
 
     //执行伤害
-    _executeDamage:function(unit, damage, reason)
+    _executeDamage:function(attacker, unit, damage, reason)
     {
         let curHp = unit.getAttr('hp')
-        curHp -= damage
+        curHp += damage
         if(curHp < 1)
             curHp = 0
         unit.setAttr('hp', curHp)
         
-        this._playNumberJump(-damage, unit.node.x, unit.node.y + unit.node.height)
+        let x = unit.node.x
+        let y = unit.node.y + unit.node.height
+        if(reason == 'normal')
+        {
+            this._playNumberJump(-damage, x,y, new cc.color(255,0,0))
+        }
+        if(reason == 'crit')
+        {
+            this._playNumberJump('暴击 '+damage, x,y, new cc.color(255,255,0))
+        }
+        if(reason == 'avoid')
+        {
+            this._playNumberJump('闪避', x,y, new cc.color(0,255,255))
+        }
+        if(reason == 'suck')
+        {
+            this._playNumberJump('吸血 '+damage, x,y, new cc.color(0,0,100))
+        }
+        if(reason == 'fanshang')
+        {
+            this._playNumberJump('反伤 '+damage, x,y, new cc.color(50,200,100))
+        }
     },
 
     //攻击动画
@@ -136,12 +205,12 @@ cc.Class({
     },
 
     //跳数字
-    _playNumberJump:function(num, x, y)
+    _playNumberJump:function(txt, x, y, color)
     {
         var numberJump = cc.instantiate(this.numberJump_prefab)
         this.node.addChild(numberJump)
         numberJump.setPosition(x, y)
-        numberJump.getComponent('numberJumpScript').playJump(num)
+        numberJump.getComponent('numberJumpScript').playJump(txt, color)
     },
 
     //初始化战场

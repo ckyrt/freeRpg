@@ -77,6 +77,12 @@ cc.Class({
 
     setLevel:function(l)
     {
+        //l > max lv
+        let len = qigongConfig[this.qinggongKey].nums.length
+        if(l > len - 1)
+        {
+            return
+        }
         let lvNode = global.getChildByName(this.node, 'lv')
         lvNode.getComponent(cc.Label).string = l
     },

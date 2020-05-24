@@ -52,8 +52,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 250,
-      "height": 150
+      "width": 150,
+      "height": 250
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -132,7 +132,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        226.493,
+        128.493,
         -22.113,
         0,
         0,
@@ -537,7 +537,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        22.868,
+        10.868,
         -5.444,
         0,
         0,
@@ -632,8 +632,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 240,
-      "height": 56.49999999999999
+      "width": 120,
+      "height": 106.5
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -644,7 +644,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        22.868,
+        10.868,
         -59.948,
         0,
         0,
@@ -683,8 +683,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "增加攻击力20\n(下一级增加攻击力22)",
-    "_N$string": "增加攻击力20\n(下一级增加攻击力22)",
+    "_string": "增加攻击力20\n(增加攻击力22)",
+    "_N$string": "增加攻击力20\n(增加攻击力22)",
     "_fontSize": 20,
     "_lineHeight": 25,
     "_enableWrapText": true,
