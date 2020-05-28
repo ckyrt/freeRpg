@@ -73,7 +73,7 @@ cc.Class({
 
     closeQigongPanel:function(t)
     {
-        this.node.x = -1000
+        this.node.x = -2000
     },
 
     getQigongAttr:function(att)

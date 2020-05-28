@@ -33,7 +33,7 @@ var qigongConfig = {
         att:'crit_multi',
         name:'恩赐解脱',
         nums:[0,10,20,30,40,50,60,70,80,90,100],
-        descript:'增加暴击伤害$倍',
+        descript:'增加暴击伤害$%',
         imgSrc:'Icons/044-Skill01',
     },
     'fanshang_rate':{

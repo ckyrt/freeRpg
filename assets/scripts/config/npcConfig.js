@@ -15,7 +15,47 @@ var npcConfig = {
             if(role.getAttr('zhengxie') == null)
                 gs._showDialog('小子 欢迎来到泫渤派啊 你还太嫩 需要去加入一个门派, 你可以去找 柳娟(正)或者 温有余(邪), 他们会告诉你怎么做')
             else
-            gs._showDialog('你已经加入了门派 去做该做的事情去吧')
+                gs._showDialog('你已经加入了门派 去做该做的事情去吧')
+        },
+    },
+
+    '地图3传送员':{ 
+        'imgSrc':'047-Grappler02',
+        'spriteWidth':32,
+        'spriteHeight':48,
+        'npcName':'地图3传送员',
+        onRoleCloseTo:function(role, gs)
+        {
+            gs._showDialog('你要去 地图3 吗？',
+            function()
+            {
+                gs.jumpMap(role, '地图3', 1, 1)
+                gs._closeDialog()
+            },
+            function()
+            {
+                gs._closeDialog()
+            },'好','不')
+        },
+    },
+
+    '地图1传送员':{ 
+        'imgSrc':'046-Grappler01',
+        'spriteWidth':32,
+        'spriteHeight':48,
+        'npcName':'地图1传送员',
+        onRoleCloseTo:function(role, gs)
+        {
+            gs._showDialog('你要去 地图1 吗？',
+            function()
+            {
+                gs.jumpMap(role, '地图1', 1, 1)
+                gs._closeDialog()
+            },
+            function()
+            {
+                gs._closeDialog()
+            },'好','不')
         },
     },
 
@@ -111,7 +151,7 @@ var npcConfig = {
             function()
             {
                 gs._closeDialog()
-                gs.openShopPanel()
+                gs.openShopPanel(['重曲刀', '无名战袍'])
             },
             function()
             {

@@ -71,10 +71,14 @@ cc.Class({
         if(v == v1)
             return
         
-        //血量不大于最大血量
-        if(att == 'hp' && v > this.getFightAttr('max_hp'))
+        if(att == 'hp')
         {
-            v = this.getFightAttr('max_hp')
+            //血量不大于最大血量
+            if(v > this.getFightAttr('max_hp'))
+                v = this.getFightAttr('max_hp')
+            //最小为0
+            if(v < 1)
+                v = 0
         }
 
         this.allAttrs[att] = v

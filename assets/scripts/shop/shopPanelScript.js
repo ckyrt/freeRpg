@@ -43,17 +43,18 @@ cc.Class({
 
     // update (dt) {},
 
-    showShopItems:function()
+    showShopItems:function(itemNames)
     {
         let j = 0
-        for(let k in itemConfig)
+        for (var n of itemNames)
         {
+            let config = itemConfig[n]
             var prefab = cc.instantiate(this.bag_item_prefab)
             this.node.addChild(prefab)
             prefab.setPosition(-175 + (j%7)*60, 80 - (Math.floor(j/7))*60)
 
             var item  = prefab.getComponent("bagItemScript")
-            item.initBagItem(itemConfig[k], 'inShop')
+            item.initBagItem(config, 'inShop')
 
             j++
         }

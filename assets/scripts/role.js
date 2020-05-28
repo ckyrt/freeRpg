@@ -38,8 +38,8 @@ cc.Class({
         if(this.x == x && this.y == y)
             return
 
-        console.log('next '+x+","+y) 
-        console.log('cur '+this.x+","+this.y) 
+        // console.log('next '+x+","+y) 
+        // console.log('cur '+this.x+","+this.y) 
         //检测到达
         if(global._checkArrived(x, y, this))
         {

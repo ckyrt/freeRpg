@@ -120,7 +120,7 @@ cc.Class({
             if(critRate > 0 && critRate >= global.random(0, 100))
             {
                 //暴击
-                damage = damage * (100+critMulti) / 100
+                damage = Math.ceil(damage * (100+critMulti) / 100)
                 damageType = 'crit'
             }
 
@@ -130,10 +130,10 @@ cc.Class({
             if(suck_rate > 0 && suck_rate >= global.random(0, 100))
             {
                 //吸血
-                let blood = damage * suck_percent / 100
+                let blood = Math.ceil(damage * suck_percent / 100)
                 if(blood < 1)
                     blood = 1
-                this._executeDamage(defender, attacker, blood, 'suck')
+                this._executeDamage(attacker, defender, blood, 'suck')
                 this.gs_._addTextInfo(attacker.getAttr('name') + ' 吸血 '+blood+' 点')
             }
 
@@ -142,34 +142,40 @@ cc.Class({
             if(fanshang_rate > 0 && fanshang_rate >= global.random(0, 100))
             {
                 //反伤
-                let blood = -damage
-                this._executeDamage(defender, attacker, blood, 'fanshang')
+                let blood = damage
+                this._executeDamage(attacker, defender, blood, 'fanshang')
                 this.gs_._addTextInfo(attacker.getAttr('name') + ' 被反伤 '+blood+' 点')
             }
         }
 
-        this._executeDamage(attacker, defender, -damage, damageType)
+        this._executeDamage(attacker, defender, damage, damageType)
         this.gs_._addTextInfo(attacker.getAttr('name')+' 对 '+ defender.getAttr('name') + ' 造成 '+damage+' 点伤害')
+    },
+
+    _addUnitHp:function(unit, hp)
+    {
+        let curHp = unit.getAttr('hp')
+        curHp += hp
+        unit.setAttr('hp', curHp)
     },
 
     //执行伤害
     _executeDamage:function(attacker, unit, damage, reason)
     {
-        let curHp = unit.getAttr('hp')
-        curHp += damage
-        if(curHp < 1)
-            curHp = 0
-        unit.setAttr('hp', curHp)
-        
         let x = unit.node.x
         let y = unit.node.y + unit.node.height
+        let attackX = attacker.node.x
+        let attackY = attacker.node.y + attacker.node.height
         if(reason == 'normal')
         {
+            this._addUnitHp(unit, -damage)
             this._playNumberJump(-damage, x,y, new cc.color(255,0,0))
         }
         if(reason == 'crit')
         {
-            this._playNumberJump('暴击 '+damage, x,y, new cc.color(255,255,0))
+            this._addUnitHp(unit, -damage)
+            this._playNumberJump(-damage, x,y, new cc.color(255,0,0))
+            this._playNumberJump('暴击', attackX,attackY, new cc.color(255,255,0))
         }
         if(reason == 'avoid')
         {
@@ -177,11 +183,13 @@ cc.Class({
         }
         if(reason == 'suck')
         {
-            this._playNumberJump('吸血 '+damage, x,y, new cc.color(0,0,100))
+            this._addUnitHp(attacker, damage)
+            this._playNumberJump('吸血 '+damage, attackX, attackY, new cc.color(0,100,0))
         }
         if(reason == 'fanshang')
         {
-            this._playNumberJump('反伤 '+damage, x,y, new cc.color(50,200,100))
+            this._addUnitHp(attacker, damage)
+            this._playNumberJump('反伤'+damage, x, y, new cc.color(255,0,100))
         }
     },
 

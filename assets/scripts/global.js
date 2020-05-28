@@ -63,7 +63,7 @@ var global = {
         if(!endNode)
         {
             this.gs_._addTextInfo("can not find path")
-            return    
+            return null
         }
         //找接下来的位置
         var nextNode =  this._getNextPoint(endNode,item)
@@ -144,7 +144,14 @@ var global = {
         {
             let posText = cc.find("Canvas/back/ui/posInfo/pos")
             posText.getComponent(cc.Label).string = '['+x+' , '+y+']'
+
+            let mapNameText = cc.find("Canvas/back/ui/posInfo/mapName")
+            if(this.gs_)
+                mapNameText.getComponent(cc.Label).string = this.gs_.node.getComponent('AstarSearch').curMapName
         }
+
+        item.setAttr('nextX', x)
+        item.setAttr('nextY', y)
     },
 
     //实施移动

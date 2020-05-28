@@ -18,6 +18,9 @@ var monsterConfig = require('monsterConfig')
 var npcConfig = require('npcConfig')
 var expConfig = require('expConfig')
 
+var mapConfig = require('mapConfig')
+var mapThingConfig = require('mapThingConfig')
+
 cc.Class({
     extends: cc.Component,
 
@@ -98,9 +101,21 @@ cc.Class({
 
         let RoleCamera = cc.find("Canvas/RoleCamera")
 
+        console.log('map x:'+global.X_OFFSET)
+        console.log('map y:'+global.Y_OFFSET)
+        console.log('camera y:'+RoleCamera.x)
+        console.log('camera y:'+RoleCamera.y)
+
         let worldPoint = t.getLocation()
-        let x = Math.floor((worldPoint.x - global.X_OFFSET + RoleCamera.x) / (global.GRID_WIDTH + global.spacing)) - 16
-        let y = Math.floor((worldPoint.y - global.Y_OFFSET + RoleCamera.y) / (global.GRID_HEIGHT + global.spacing)) - 29
+
+        console.log('click x:'+worldPoint.y)
+        console.log('click y:'+worldPoint.y)
+
+        let mapX =  worldPoint.x  + RoleCamera.x- global.X_OFFSET //-359.892 - 16*22
+        let mapY =  worldPoint.y  + RoleCamera.y- global.Y_OFFSET //-534.975 - 29*22
+
+        let x = Math.floor(mapX / (global.GRID_WIDTH + global.spacing)) - 16
+        let y = Math.floor(mapY / (global.GRID_HEIGHT + global.spacing)) - 29
         console.log("click: ("+x+","+y+")")
 
         if(this.curItemScript_ != null)
@@ -461,11 +476,6 @@ cc.Class({
             //this.add_item(20, 39, attrs)
         }
 
-        this.add_npc(20, 9, npcConfig['新手指导员'])
-        this.add_npc(5, 6, npcConfig['柳娟'])
-        this.add_npc(10, 9, npcConfig['温有余'])
-        this.add_npc(5, 10, npcConfig['王二牛'])
-        this.add_npc(15, 10, npcConfig['平十指'])
         {
             var attrs = {               
                 'imgSrc':'023-Gunner01',
@@ -481,8 +491,36 @@ cc.Class({
                 'level':1,
                 'exp':0,
             }
-            this.add_role(3, 3, attrs)
+            let role = this.add_role(attrs)
+            this.jumpMap(role, '地图3', 13, 18)
         }
+        
+    },
+
+    _initMapThing:function(mapName)
+    {
+        let npcs = mapThingConfig[mapName].mapNpcs
+        for(var i=0;i<npcs.length;i++)
+        {
+            let x = npcs[i][0]
+            let y = npcs[i][1]
+            let npcName = npcs[i][2]
+            console.log(x)
+            console.log(y)
+            console.log(npcName)
+            this.add_npc(mapName, x, y, npcConfig[npcName])
+        }
+    },
+
+    jumpMap:function(role, mapName,x,y)
+    {
+        //清理npc
+        this._clearNpcs()
+
+        //跳到目标
+        this.node.getComponent('AstarSearch').initMap(mapName)
+        this._initMapThing(mapName)
+        global.set_grid(x, y, role)
     },
 
     // update (dt) {},
@@ -507,7 +545,7 @@ cc.Class({
             this._remove_item(item)
     },
 
-    add_npc:function(x, y, attrs)
+    add_npc:function(mapName, x, y, attrs)
     {
         var npcPreb = cc.instantiate(this.npc_prefab)
         //console.log(itemPreb)
@@ -527,14 +565,13 @@ cc.Class({
             this._remove_npc(item)
     },
 
-    add_role:function(x, y, attrs)
+    add_role:function(attrs)
     {
         var rolePreb = cc.instantiate(this.role_prefab)
         this.node.addChild(rolePreb)
         var role  = rolePreb.getComponent("role")
         role.init(attrs)
-        global.set_grid(x, y, role)
-
+        
         this._add_role(role)
         return role
     },
@@ -663,6 +700,15 @@ cc.Class({
             return ele.uid == uid
          }, uid)
          return npc
+    },
+    _clearNpcs:function()
+    {
+        for(var i=0;i<this.npcs.length;i++)
+        {
+            let npc = this.npcs[i]
+            npc.node.destroy()
+        }
+        this.npcs=[]
     },
     /**npc */
 
@@ -934,13 +980,13 @@ cc.Class({
     },
 
     //打开商店界面
-    openShopPanel:function()
+    openShopPanel:function(itemNames)
     {
         var prefab = cc.instantiate(this.shopPanel_prefab)
         this.node.addChild(prefab)
         prefab.setPosition(0,0)
         this.shopPanel_  = prefab.getComponent("shopPanelScript")
-        this.shopPanel_.showShopItems()
+        this.shopPanel_.showShopItems(itemNames)
     },
 
     //关闭商店界面

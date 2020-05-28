@@ -38,7 +38,7 @@ cc.Class({
 
     closeDialog:function()
     {
-        this.node.x = -1000
+        this.node.x = -2000
 
         let bt1 = global.getChildByName(this.node, "bt1")
         let bt2 = global.getChildByName(this.node, "bt2")
