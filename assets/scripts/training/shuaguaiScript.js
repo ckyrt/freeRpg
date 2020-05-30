@@ -142,9 +142,7 @@ cc.Class({
             if(fanshang_rate > 0 && fanshang_rate >= global.random(0, 100))
             {
                 //反伤
-                let blood = damage
-                this._executeDamage(attacker, defender, blood, 'fanshang')
-                this.gs_._addTextInfo(attacker.getAttr('name') + ' 被反伤 '+blood+' 点')
+                damageType = 'fanshang'
             }
         }
 
@@ -188,8 +186,11 @@ cc.Class({
         }
         if(reason == 'fanshang')
         {
-            this._addUnitHp(attacker, damage)
-            this._playNumberJump('反伤'+damage, x, y, new cc.color(255,0,100))
+            this._addUnitHp(unit, -damage)
+            this._playNumberJump('反伤', x, y, new cc.color(255,0,100))
+
+            this._addUnitHp(attacker, -damage)
+            this._playNumberJump(-damage, attackX, attackY, new cc.color(255,0,0))
         }
     },
 
