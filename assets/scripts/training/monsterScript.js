@@ -51,9 +51,8 @@ cc.Class({
 
             //图片切换帧序号
             self.frameNumber_ = 0
-
             var sp = self.node.getComponent(cc.Sprite);//获取组件
-            sp.spriteFrame = global._getWalkSprite(global.DIR_D, self);//更改图片
+            sp.spriteFrame = global.getDefaultSprit(self);//更改图片
 
             console.log('npc init load res')
 　　　　})

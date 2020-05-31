@@ -28,7 +28,7 @@
   "renderMode": "0",
   "startScene": "f098e176-54e6-406e-baec-a32f9d33beb9",
   "title": "FreeRpg",
-  "webOrientation": "landscape",
+  "webOrientation": "portrait",
   "wechatgame": {
     "REMOTE_SERVER_ROOT": "",
     "appid": "wx0aa5b77e37a0541d",

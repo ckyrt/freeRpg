@@ -77,6 +77,9 @@ cc.Class({
         let back = cc.find("Canvas/back");
         this.gs_ = back.getComponent('gameScript')
         global.gs_ = this.gs_
+
+        //图片切换时间间隔
+        this.spriteChangeTime_ = 0
     },
 
     init(attrs)
@@ -84,7 +87,7 @@ cc.Class({
         this.allAttrs = JSON.parse(JSON.stringify(attrs)) //attrs//深拷贝
 
         //加载图片
-        var url = 'textures/' + this.allAttrs['imgSrc']
+        var url = 'textures/role/' + this.allAttrs['imgSrc']
         var self = this
         cc.loader.loadRes(url, cc.SpriteFrame, function(err,spriteFrame)
 　　　　{
@@ -100,8 +103,8 @@ cc.Class({
             var sp = self.node.getComponent(cc.Sprite);//获取组件
             sp.spriteFrame = global._getWalkSprite(global.DIR_D, self);//更改图片
 
-            self.node.width = self.getAttr('spriteWidth')
-            self.node.height = self.getAttr('spriteHeight')
+            //self.node.width = self.getAttr('spriteWidth')
+            //self.node.height = self.getAttr('spriteHeight')
 
             console.log('role init load res')
 　　　　})

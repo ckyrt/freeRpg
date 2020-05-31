@@ -114,8 +114,8 @@ cc.Class({
         let mapX =  worldPoint.x  + RoleCamera.x- global.X_OFFSET //-359.892 - 16*22
         let mapY =  worldPoint.y  + RoleCamera.y- global.Y_OFFSET //-534.975 - 29*22
 
-        let x = Math.floor(mapX / (global.GRID_WIDTH + global.spacing)) - 16
-        let y = Math.floor(mapY / (global.GRID_HEIGHT + global.spacing)) - 29
+        let x = Math.floor(mapX / (global.GRID_WIDTH + global.spacing)) - 5
+        let y = Math.floor(mapY / (global.GRID_HEIGHT + global.spacing)) - 13
         console.log("click: ("+x+","+y+")")
 
         if(this.curItemScript_ != null)
@@ -478,16 +478,16 @@ cc.Class({
 
         {
             var attrs = {               
-                'imgSrc':'023-Gunner01',
-                'spriteWidth':32,
-                'spriteHeight':48,
-                'speed':50,
+                'imgSrc':'girl1',
+                'spriteWidth':64,
+                'spriteHeight':128,
+                'speed':36,
                 'isRole':1,
                 'hp':50,
                 'max_hp':50,
                 'attack':5,
                 'defend':0,
-                'name':'張小凡',
+                'name':'碧瑶',
                 'level':1,
                 'exp':0,
             }

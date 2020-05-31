@@ -3,8 +3,8 @@ var global = {
 
     X_OFFSET:0,
     Y_OFFSET:0,
-    GRID_WIDTH:20,
-    GRID_HEIGHT:20,
+    GRID_WIDTH:48,
+    GRID_HEIGHT:36,
     spacing:2,
 
     UID: 0,
@@ -159,8 +159,9 @@ var global = {
     {
         var dir = global._getDir(targetX, targetY, item)
         
+        //console.log('item.spriteChangeTime_:'+item.spriteChangeTime_)
         item.spriteChangeTime_ += dt
-        if(item.spriteChangeTime_ > 0.2)
+        if(item.spriteChangeTime_ > 0.3)
         {
             var sp = item.node.getComponent(cc.Sprite);//获取组件
             var ws = global._getWalkSprite(dir, item)
@@ -177,7 +178,7 @@ var global = {
         //     isRole = true
         // }
         let moveNode = isRole? this.gs_.node: item.node
-        dist = isRole? dist*-1: dist
+        //dist = isRole? dist*-1: dist
         switch(dir) {
             case global.DIR_L:
                 moveNode.x -= dist
@@ -263,30 +264,43 @@ var global = {
 
     _getWalkSprite: function(dir, item)
     {
+        console.log('dir:'+dir)
         item.frameNumber_ += 1
-        if(item.frameNumber_ > 3)
+        if(item.frameNumber_ > 7)
             item.frameNumber_ = 0
 
         var sprite
-        if(dir == global.DIR_D)
+        if(dir == global.DIR_L)
         {
-            //down
             sprite = this._getSprite(item.frameNumber_, 0, item)
         }
-        else if(dir == global.DIR_L)
+        else if(dir == global.DIR_LU)
         {
-            //left
             sprite = this._getSprite(item.frameNumber_, 1, item)
-        }
-        else if(dir == global.DIR_R)
-        {
-            //right
-            sprite = this._getSprite(item.frameNumber_, 2, item)
         }
         else if(dir == global.DIR_U)
         {
-            //up
+            sprite = this._getSprite(item.frameNumber_, 2, item)
+        }
+        else if(dir == global.DIR_RU)
+        {
             sprite = this._getSprite(item.frameNumber_, 3, item)
+        }
+        else if(dir == global.DIR_R)
+        {
+            sprite = this._getSprite(item.frameNumber_, 4, item)
+        }
+        else if(dir == global.DIR_RD)
+        {
+            sprite = this._getSprite(item.frameNumber_, 5, item)
+        }
+        else if(dir == global.DIR_D)
+        {
+            sprite = this._getSprite(item.frameNumber_, 6, item)
+        }
+        else if(dir == global.DIR_LD)
+        {
+            sprite = this._getSprite(item.frameNumber_, 7, item)
         }
         return sprite
     },
@@ -297,10 +311,26 @@ var global = {
         if(item.resource_sprite == null)
            return
         var sprite = item.resource_sprite.clone(); // 克隆一张图片
-        var width = sprite.getRect().width/4;
-        var height = sprite.getRect().height/4;
+        var width = sprite.getRect().width/8;
+        var height = sprite.getRect().height/8;
         var x = sprite.getRect().x + i * width;
         var y = sprite.getRect().y + j * height;
+
+        sprite.setRect(new cc.Rect(x,y,width,height));
+        sprite.setRect(new cc.Rect(x+i*10,y+j*5,48,height))
+        return sprite
+    },
+
+    //获取默认贴图
+    getDefaultSprit: function(item)
+    {
+        if(item.resource_sprite == null)
+           return
+        var sprite = item.resource_sprite.clone(); // 克隆一张图片
+        var width = sprite.getRect().width/4;
+        var height = sprite.getRect().height/4;
+        var x = sprite.getRect().x
+        var y = sprite.getRect().y
         var tmpRect = new cc.Rect(x,y,width,height);
         sprite.setRect(tmpRect);
         return sprite
