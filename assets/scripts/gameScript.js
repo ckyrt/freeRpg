@@ -98,7 +98,6 @@ cc.Class({
 
     onTouchEventEnd:function(t)
     {
-
         let RoleCamera = cc.find("Canvas/RoleCamera")
 
         console.log('map x:'+global.X_OFFSET)
@@ -114,8 +113,8 @@ cc.Class({
         let mapX =  worldPoint.x  + RoleCamera.x- global.X_OFFSET //-359.892 - 16*22
         let mapY =  worldPoint.y  + RoleCamera.y- global.Y_OFFSET //-534.975 - 29*22
 
-        let x = Math.floor(mapX / (global.GRID_WIDTH + global.spacing)) - 5
-        let y = Math.floor(mapY / (global.GRID_HEIGHT + global.spacing)) - 13
+        let x = Math.floor(mapX / (global.GRID_WIDTH + global.spacing)) - 16
+        let y = Math.floor(mapY / (global.GRID_HEIGHT + global.spacing)) - 38
         console.log("click: ("+x+","+y+")")
 
         if(this.curItemScript_ != null)

@@ -7,8 +7,8 @@ var npcConfig = {
     '新手指导员':{
                 
         'imgSrc':'066-Beast04',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'新手指导员',
         onRoleCloseTo:function(role, gs)
         {
@@ -21,8 +21,8 @@ var npcConfig = {
 
     '地图3传送员':{ 
         'imgSrc':'047-Grappler02',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'地图3传送员',
         onRoleCloseTo:function(role, gs)
         {
@@ -41,8 +41,8 @@ var npcConfig = {
 
     '地图1传送员':{ 
         'imgSrc':'046-Grappler01',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'地图1传送员',
         onRoleCloseTo:function(role, gs)
         {
@@ -62,8 +62,8 @@ var npcConfig = {
     '柳娟':{
                 
         'imgSrc':'006-Fighter06',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'柳娟',
         onRoleCloseTo:function(role, gs)
         {
@@ -95,8 +95,8 @@ var npcConfig = {
     '温有余':{
                 
         'imgSrc':'013-Warrior01',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'温有余',
 
         onRoleCloseTo:function(role, gs)
@@ -122,8 +122,8 @@ var npcConfig = {
     '王二牛':{
                 
         'imgSrc':'013-Warrior01',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'王二牛',
         onRoleCloseTo:function(role, gs)
         {
@@ -142,8 +142,8 @@ var npcConfig = {
     '平十指':{
                 
         'imgSrc':'128-Noble03',
-        'spriteWidth':64,
-        'spriteHeight':96,
+        'spriteWidth':32,
+        'spriteHeight':48,
         'npcName':'平十指',
         onRoleCloseTo:function(role, gs)
         {

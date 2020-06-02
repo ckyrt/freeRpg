@@ -3,8 +3,8 @@ var global = {
 
     X_OFFSET:0,
     Y_OFFSET:0,
-    GRID_WIDTH:48,
-    GRID_HEIGHT:36,
+    GRID_WIDTH:20,
+    GRID_HEIGHT:15,
     spacing:2,
 
     UID: 0,
@@ -317,7 +317,7 @@ var global = {
         var y = sprite.getRect().y + j * height;
 
         sprite.setRect(new cc.Rect(x,y,width,height));
-        sprite.setRect(new cc.Rect(x+i*10,y+j*5,48,height))
+        sprite.setRect(new cc.Rect(x+i*10,y+j*5,40,90))
         return sprite
     },
 

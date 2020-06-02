@@ -182,7 +182,10 @@ cc.Class({
                     //设置父节点，为了存储最终路径
                     neighborNode.parent = node;
                     //计算权重
-                    neighborNode.stepCount = node.stepCount + 1;
+                    let sum = element.row + element.col
+                    let w = (sum == 2 || sum == -2 || sum == 0)?1.4:1
+
+                    neighborNode.stepCount = node.stepCount + w;
                     this.computeWeight(neighborNode);
                     this.GridLists.push(neighborNode);
                     // this.addNodeToList(this.GridLists,neighborNode)
