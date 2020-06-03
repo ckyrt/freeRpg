@@ -491,7 +491,7 @@ cc.Class({
                 'exp':0,
             }
             let role = this.add_role(attrs)
-            this.jumpMap(role, '地图3', 13, 18)
+            this.jumpMap(role, '地图1', 13, 18)
         }
         
     },

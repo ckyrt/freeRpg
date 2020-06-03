@@ -43,10 +43,19 @@ cc.Class({
     setData:function(d)
     {
         this.d_ = d
+        if(d == 1)
+        {
+            this.node.color = new cc.Color(255, 0, 0)
+            this.node.opacity = 90
+        }
+        if(d == 0)
+        {
+            this.node.color = new cc.Color(255, 255, 0)
+            this.node.opacity = 90
+        }
     },
     getData:function()
     {
-        //没设置就是 阻挡
-        return this.d_ != null ? this.d_ :1
+        return this.d_
     }
 });

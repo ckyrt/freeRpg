@@ -49,9 +49,23 @@ cc.Class({
         this.map.removeAllChildren();
         //用于存储界面的节点
         this.nodeMap = {};
-        //地图
+        //地图 阻挡
         this._map = mapConfig[mapName].gridData
-        
+        //地图 背景 
+        let mapNode = cc.find("Canvas/back/Map")
+
+        var url = 'map/' + mapConfig[mapName].img
+        cc.loader.loadRes(url, cc.SpriteFrame, function(err,spriteFrame)
+　　　　{
+            if (err) {
+                cc.error(err.message || err);
+                return;
+            }
+
+            var sp = mapNode.getComponent(cc.Sprite);//获取组件
+            sp.spriteFrame = spriteFrame
+　　　　})
+
         // this._map = new Array()
         // for(var i = 0; i < 100; i++)
         // {
