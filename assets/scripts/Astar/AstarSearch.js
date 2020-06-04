@@ -81,10 +81,13 @@ cc.Class({
         //     }
         // }
         let color;
-        //初始化地图
-        this._map.forEach((arr, row) => {
-            arr.forEach((e, col) => {
-                
+        //上下颠倒下
+        //for(var row=this._map.length-1;row>=0;--row)
+        for(var row=0;row<this._map.length;++row)
+        {
+            for(var col=0;col<this._map[row].length;++col)
+            {
+                let e = this._map[row][col]
                 if (e == this.NodeType.wall) { //墙
                     let grid = cc.instantiate(this.grid);
                     grid.parent = this.map;
@@ -104,9 +107,16 @@ cc.Class({
 
                 //存储界面节点
                 //this.nodeMap[row + "_" + col] = grid;
-            })
+            }
+        }
+        //初始化地图
+        // this._map.forEach((arr, row) => {
+        //     arr.forEach((e, col) => {
+                
+                
+        //     })
 
-        });
+        // });
     },
 
     findPath(curX, curY, targetX, targetY) {
