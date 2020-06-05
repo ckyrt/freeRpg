@@ -52,10 +52,23 @@ cc.Class({
     showDialog:function(content, func1=null, func2=null, tx1='好的', tx2='算了')
     {
         this.closeDialog()
+        this.node.x = 0
 
+        //填充内容
         let contentNode = global.getChildByName(this.node, "content")
         contentNode.getComponent(cc.Label).string = content
-        this.node.x = 0
+        contentNode.getComponent(cc.Label)._forceUpdateRenderData(true)
+
+        //放缩背景高度
+        let backNode = global.getChildByName(this.node, "dialogBack")
+        backNode.height = contentNode.height + 60
+
+        //按钮调整竖直方向位置
+        let bt_sNode = global.getChildByName(this.node, "bt_s")
+        bt_sNode.y = contentNode.y - contentNode.height/2
+
+        console.log('contentNode.height:'+contentNode.height)
+        console.log('backNode.height:'+backNode.height)
 
         let bt1 = global.getChildByName(this.node, "bt1")
         let bt2 = global.getChildByName(this.node, "bt2")

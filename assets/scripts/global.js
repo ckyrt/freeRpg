@@ -103,7 +103,7 @@ var global = {
     _checkArrivedX:function(x, item)
     {
         var pixX = global.X_OFFSET + (global.GRID_WIDTH+global.spacing) * x - this.gs_.node.x
-        if(Math.abs(item.node.x-pixX )<3)
+        if(Math.abs(item.node.x-pixX )<1)
         {
             return true
         }
@@ -113,7 +113,7 @@ var global = {
     _checkArrivedY:function(y, item)
     {
         var pixY = global.Y_OFFSET + (global.GRID_HEIGHT+global.spacing) * y - this.gs_.node.y
-        if(Math.abs(item.node.y-pixY )<3)
+        if(Math.abs(item.node.y-pixY )<1)
         {
             return true
         }
@@ -161,7 +161,7 @@ var global = {
         
         //console.log('item.spriteChangeTime_:'+item.spriteChangeTime_)
         item.spriteChangeTime_ += dt
-        if(item.spriteChangeTime_ > 0.3)
+        if(item.spriteChangeTime_ > 0.1)
         {
             var sp = item.node.getComponent(cc.Sprite);//获取组件
             var ws = global._getWalkSprite(dir, item)
@@ -170,7 +170,8 @@ var global = {
                 item.spriteChangeTime_ = 0
         }
 
-        var dist = item.getAttr('speed')*dt
+        var distX = item.getAttr('speed')*dt
+        var distY = distX * this.GRID_HEIGHT / this.GRID_WIDTH
 
         let isRole = false
         // if(item.getAttr('isRole') != null)
@@ -179,34 +180,38 @@ var global = {
         // }
         let moveNode = isRole? this.gs_.node: item.node
         //dist = isRole? dist*-1: dist
+
+        console.log('distX:'+distX)
+        console.log('distY:'+distY)
+
         switch(dir) {
             case global.DIR_L:
-                moveNode.x -= dist
+                moveNode.x -= distX
                break;
             case global.DIR_LU:
-                moveNode.x -= dist
-                moveNode.y += dist
+                moveNode.x -= distX
+                moveNode.y += distY
                break;
             case global.DIR_U:
-                moveNode.y += dist
+                moveNode.y += distY
                break;
             case global.DIR_RU:
-                moveNode.x += dist
-                moveNode.y += dist
+                moveNode.x += distX
+                moveNode.y += distY
                break;
             case global.DIR_R:
-                moveNode.x += dist
+                moveNode.x += distX
                break;
             case global.DIR_RD:
-                moveNode.x += dist
-                moveNode.y -= dist
+                moveNode.x += distX
+                moveNode.y -= distY
                break;
             case global.DIR_D:
-                moveNode.y -= dist
+                moveNode.y -= distY
                break;
             case global.DIR_LD:
-                moveNode.x -= dist
-                moveNode.y -= dist
+                moveNode.x -= distX
+                moveNode.y -= distY
                break;
             default:
        } 
