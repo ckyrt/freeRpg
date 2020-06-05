@@ -46,6 +46,18 @@ cc.Class({
             //到达 修正
             global.set_grid(x, y, this)          
             global._findPathAndGetNextPoint(this, this.getAttr('endPosX'), this.getAttr('endPosY'))
+
+            //如果当前为遮挡 则改变透明度
+            let gridData = this.gs_.node.getComponent('AstarSearch').getGridDataByXY(x,y)
+            console.log('gridData:'+gridData)
+            if( gridData == 2)
+            {
+                this.node.opacity = 90
+            }
+            else
+            {
+                this.node.opacity = 999
+            }
         }
         else
         {

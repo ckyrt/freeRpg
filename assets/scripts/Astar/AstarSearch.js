@@ -23,10 +23,10 @@ cc.Class({
             { row: 1, col: 0 },
             { row: -1, col: 0 },
 
-            // { row: -1, col: -1 },
-            // { row: -1, col: 1 },
-            // { row: 1, col: -1 },
-            // { row: 1, col: 1 },
+            { row: -1, col: -1 },
+            { row: -1, col: 1 },
+            { row: 1, col: -1 },
+            { row: 1, col: 1 },
         ]
 
         //节点类型
@@ -66,34 +66,18 @@ cc.Class({
             sp.spriteFrame = spriteFrame
 　　　　})
 
-        // this._map = new Array()
-        // for(var i = 0; i < 100; i++)
-        // {
-        //     this._map[i] = new Array()
-        //     for(var j = 0; j < 100; j++)
-        //     {
-        //         this._map[i][j] = 0
-
-        //         if(i == 0 || i == 99 || j == 0 || j == 99)
-        //         {
-        //             this._map[i][j] = 1
-        //         }
-        //     }
-        // }
         let color;
-        //上下颠倒下
-        //for(var row=this._map.length-1;row>=0;--row)
         for(var row=0;row<this._map.length;++row)
         {
             for(var col=0;col<this._map[row].length;++col)
             {
                 let e = this._map[row][col]
                 if (e == this.NodeType.wall) { //墙
-                    let grid = cc.instantiate(this.grid);
-                    grid.parent = this.map;
-                    grid.setPosition(col * (this.gridWidth + global.spacing), row * (this.gridHeight + global.spacing));
-                    color = new cc.Color(0, 255, 0);
-                    grid.color = color;
+                    //let grid = cc.instantiate(this.grid);
+                    //grid.parent = this.map;
+                    //grid.setPosition(col * (this.gridWidth + global.spacing), row * (this.gridHeight + global.spacing));
+                    //color = new cc.Color(0, 255, 0);
+                    //grid.color = color;
                 } else if (e == this.NodeType.start) { //起点
                     //color = new cc.Color(123, 123, 123);
                     //this.startNode = { row, col }
@@ -109,14 +93,6 @@ cc.Class({
                 //this.nodeMap[row + "_" + col] = grid;
             }
         }
-        //初始化地图
-        // this._map.forEach((arr, row) => {
-        //     arr.forEach((e, col) => {
-                
-                
-        //     })
-
-        // });
     },
 
     findPath(curX, curY, targetX, targetY) {
@@ -131,13 +107,13 @@ cc.Class({
         let row = curY
         let col = curX
         this.startNode = { row, col }
-        this._map[row][col] = this.NodeType.start
+        //this._map[row][col] = this.NodeType.start
         //let grid = this.nodeMap[row + "_" + col]
 
         row = targetY
         col = targetX
         this.targetNode = { row, col }
-        this._map[row][col] = this.NodeType.target
+        //this._map[row][col] = this.NodeType.target
         //grid = this.nodeMap[row + "_" + col]
         //终点涂色
         //grid.color = new cc.Color(123, 0, 123)
@@ -281,7 +257,13 @@ cc.Class({
         // if (gridNode) {
         //     gridNode.color = color;
         // }
-    }
+    },
+
+    //得到位置的阻挡数据 0 1 2
+    getGridDataByXY:function(x,y)
+    {
+        return this._map[y][x]
+    },
 
 
 });

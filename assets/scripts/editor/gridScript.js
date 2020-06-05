@@ -53,6 +53,11 @@ cc.Class({
             this.node.color = new cc.Color(255, 255, 0)
             this.node.opacity = 90
         }
+        if(d == 2)
+        {
+            this.node.color = new cc.Color(0, 0, 255)
+            this.node.opacity = 90
+        }
     },
     getData:function()
     {

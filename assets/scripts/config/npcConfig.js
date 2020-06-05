@@ -6,7 +6,7 @@ var npcConfig = {
 
     '新手指导员':{
                 
-        'imgSrc':'066-Beast04',
+        'imgSrc':'137-BunnyGirl01',
         'spriteWidth':32,
         'spriteHeight':48,
         'npcName':'新手指导员',
